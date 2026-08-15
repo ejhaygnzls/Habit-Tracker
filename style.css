@@ -1,0 +1,61 @@
+:root {
+  --background: #0f1720;
+  --surface: #0b1220;
+  --muted-surface: #0b1424;
+  --text: #e6eef8;
+  --muted-text: #9fb3c8;
+  --primary: #2dd4bf;
+  --accent: #60a5fa;
+  --border: rgba(255,255,255,0.06);
+}
+
+* { box-sizing: border-box; }
+html,body{ height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--background); color:var(--text); }
+
+.app-header{ display:flex; justify-content:space-between; align-items:center; padding:18px 24px; border-bottom:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); }
+.app-title{ margin:0; font-size:1.25rem; }
+.greeting{ margin:2px 0 0 0; color:var(--muted-text); font-size:0.9rem; }
+.current-date{ color:var(--muted-text); }
+
+.container{ max-width:1000px; margin:28px auto; padding:0 16px; }
+.dashboard{ display:grid; grid-template-columns: 320px 1fr; gap:20px; }
+.card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:12px; padding:18px; border:1px solid var(--border); }
+
+.progress-card h2, .habits-card h2{ margin:0 0 12px 0; }
+.progress-info{ display:flex; gap:16px; align-items:center; }
+.progress-percent{ font-weight:700; font-size:1.6rem; }
+.progress-bar{ flex:1; background:var(--muted-surface); height:12px; border-radius:999px; overflow:hidden; }
+.progress-fill{ height:100%; background:linear-gradient(90deg,var(--primary),var(--accent)); width:0%; transition:width 300ms ease; }
+.streak{ margin-top:12px; color:var(--muted-text); }
+
+.habits-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.btn{ padding:8px 12px; border-radius:8px; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text); cursor:pointer; }
+.btn.primary{ background:var(--primary); color:#052018; border:0; }
+
+.habits-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+.habit-item{ display:flex; justify-content:space-between; align-items:center; padding:12px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(255,255,255,0.02); }
+.habit-main{ display:flex; gap:12px; align-items:center; }
+.habit-name{ font-weight:600; }
+.habit-category{ color:var(--muted-text); font-size:0.9rem; }
+.habit-actions{ display:flex; gap:8px; align-items:center; }
+.checkbox{ width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; cursor:pointer; border:1px solid rgba(255,255,255,0.04); }
+.checkbox.completed{ background:linear-gradient(90deg,var(--primary),var(--accent)); color:#002020; }
+.delete-btn{ background:transparent; color:var(--muted-text); border:0; cursor:pointer; }
+
+.modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(0deg, rgba(2,6,23,0.6), rgba(2,6,23,0.6)); }
+.modal.hidden{ display:none; }
+.modal-content{ width:320px; background:var(--surface); padding:18px; border-radius:12px; border:1px solid var(--border); }
+.modal-content h3{ margin-top:0; }
+.modal-content form{ display:flex; flex-direction:column; gap:12px; }
+.modal-content input{ padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--text); }
+.modal-actions{ display:flex; justify-content:flex-end; gap:8px; }
+
+/* Responsive */
+@media (max-width:860px){
+  .dashboard{ grid-template-columns: 1fr; }
+}
+
+@media (max-width:420px){
+  .app-header{ padding:12px; }
+  .container{ margin:16px auto; }
+}
