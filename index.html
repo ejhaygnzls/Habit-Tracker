@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-left">
+      <h1 class="app-title">Habit Tracker</h1>
+      <p class="greeting" id="greeting">Good day 👋</p>
+    </div>
+    <div class="header-right">
+      <div id="current-date" class="current-date"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="dashboard">
+      <div class="progress-card card">
+        <h2>Today's Progress</h2>
+        <div class="progress-info">
+          <div class="progress-percent" id="progress-percent">0%</div>
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="streak">Current streak: <span id="current-streak">0</span> days</div>
+      </div>
+
+      <div class="habits-card card">
+        <div class="habits-header">
+          <h2>Today's Habits</h2>
+          <button id="add-habit-btn" class="btn primary">+ Add Habit</button>
+        </div>
+
+        <ul id="habits-list" class="habits-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Add Habit Modal -->
+  <div id="habit-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Add Habit</h3>
+      <form id="habit-form">
+        <label>
+          Habit Name
+          <input id="habit-name" type="text" placeholder="e.g. Coding" required />
+        </label>
+        <label>
+          Category
+          <input id="habit-category" type="text" placeholder="e.g. Skills" />
+        </label>
+        <div class="modal-actions">
+          <button type="button" id="cancel-btn" class="btn">Cancel</button>
+          <button type="submit" class="btn primary">Add Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
