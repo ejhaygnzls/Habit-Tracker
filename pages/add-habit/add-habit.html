@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add New Habit | Habit Tracker</title>
+
+    <link rel="stylesheet" href="add-habit.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+
+                <button
+                    class="logo-button"
+                    id="logoButton"
+                    title="Dashboard"
+                >
+                    <i data-lucide="check-circle"></i>
+                </button>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <button
+                    class="nav-item"
+                    data-page="dashboard"
+                    title="Dashboard"
+                >
+                    <i data-lucide="layout-grid"></i>
+                </button>
+
+
+                <button
+                    class="nav-item active"
+                    title="Habits"
+                >
+                    <i data-lucide="calendar-check"></i>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="calendar"
+                    title="Calendar"
+                >
+                    <i data-lucide="calendar-days"></i>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="progress"
+                    title="Progress"
+                >
+                    <i data-lucide="chart-no-axes-combined"></i>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="settings"
+                    title="Settings"
+                >
+                    <i data-lucide="settings"></i>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    title="Toggle theme"
+                >
+                    <span class="toggle-circle"></span>
+                </button>
+
+
+                <button
+                    class="profile-avatar"
+                    title="Profile"
+                >
+                    J
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main class="main">
+
+            <header class="page-header">
+
+                <div class="header-title">
+
+                    <button
+                        class="back-button"
+                        id="backButton"
+                        title="Go back"
+                    >
+                        <i data-lucide="arrow-left"></i>
+                    </button>
+
+
+                    <div>
+
+                        <h1>Add New Habit</h1>
+
+                        <p>
+                            Create a new positive routine to track your daily
+                            progress and consistency.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =========================
+                 PAGE CONTENT
+            ========================== -->
+
+            <div class="page-layout">
+
+
+                <!-- =====================
+                     FORM CARD
+                ====================== -->
+
+                <section class="form-card">
+
+                    <form id="habitForm" novalidate>
+
+
+                        <!-- HABIT NAME -->
+
+                        <div class="form-group full-width">
+
+                            <label for="habitName">
+                                HABIT NAME
+                            </label>
+
+                            <input
+                                type="text"
+                                id="habitName"
+                                name="habitName"
+                                placeholder="e.g. Daily Coding Practice"
+                                maxlength="60"
+                                autocomplete="off"
+                                required
+                            >
+
+                            <span
+                                class="field-error"
+                                id="habitNameError"
+                            ></span>
+
+                        </div>
+
+
+
+                        <!-- FREQUENCY -->
+
+                        <div class="form-group">
+
+                            <label>
+                                FREQUENCY
+                            </label>
+
+                            <div class="frequency-options">
+
+                                <button
+                                    type="button"
+                                    class="frequency-button active"
+                                    data-frequency="Daily"
+                                >
+                                    Daily
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="frequency-button"
+                                    data-frequency="Weekly"
+                                >
+                                    Weekly
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="frequency-button"
+                                    data-frequency="Custom"
+                                >
+                                    Custom
+                                </button>
+
+                            </div>
+
+                            <input
+                                type="hidden"
+                                id="frequency"
+                                value="Daily"
+                            >
+
+                        </div>
+
+
+
+                        <!-- CATEGORY -->
+
+                        <div class="form-group">
+
+                            <label for="category">
+                                CATEGORY
+                            </label>
+
+                            <div class="select-wrapper">
+
+                                <span
+                                    class="category-dot"
+                                    id="categoryDot"
+                                ></span>
+
+                                <select id="category">
+
+                                    <option
+                                        value="Fitness"
+                                        data-color="green"
+                                    >
+                                        Fitness
+                                    </option>
+
+                                    <option
+                                        value="Skills"
+                                        data-color="blue"
+                                        selected
+                                    >
+                                        Skills
+                                    </option>
+
+                                    <option
+                                        value="Learning"
+                                        data-color="purple"
+                                    >
+                                        Learning
+                                    </option>
+
+                                    <option
+                                        value="Personal"
+                                        data-color="orange"
+                                    >
+                                        Personal
+                                    </option>
+
+                                    <option
+                                        value="Work"
+                                        data-color="teal"
+                                    >
+                                        Work
+                                    </option>
+
+                                </select>
+
+                                <i data-lucide="chevron-down"></i>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- DAILY TARGET -->
+
+                        <div class="form-group">
+
+                            <label>
+                                DAILY TARGET GOAL
+                            </label>
+
+                            <div class="target-row">
+
+                                <input
+                                    type="number"
+                                    id="targetAmount"
+                                    min="1"
+                                    max="999"
+                                    value="2"
+                                    required
+                                >
+
+                                <div class="select-wrapper target-unit">
+
+                                    <select id="targetUnit">
+
+                                        <option value="Minutes">
+                                            Minutes
+                                        </option>
+
+                                        <option
+                                            value="Hours"
+                                            selected
+                                        >
+                                            Hours
+                                        </option>
+
+                                        <option value="Times">
+                                            Times
+                                        </option>
+
+                                    </select>
+
+                                    <i data-lucide="chevron-down"></i>
+
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="field-error"
+                                id="targetError"
+                            ></span>
+
+                        </div>
+
+
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="form-group">
+
+                            <label for="description">
+                                DESCRIPTION / NOTES
+                            </label>
+
+                            <textarea
+                                id="description"
+                                maxlength="250"
+                                placeholder="Write clean code, solve 2 LeetCode problems, and review algorithms."
+                            ></textarea>
+
+                            <div class="character-count">
+                                <span id="characterCount">0</span>/250
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- REMINDER -->
+
+                        <div class="form-group">
+
+                            <label for="reminderTime">
+                                REMINDER TIME
+                            </label>
+
+                            <div class="time-input">
+
+                                <i data-lucide="clock"></i>
+
+                                <input
+                                    type="time"
+                                    id="reminderTime"
+                                    value="09:00"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- COLOR -->
+
+                        <div class="form-group full-width color-section">
+
+                            <label>
+                                COLOR LABEL
+                            </label>
+
+                            <div class="color-options">
+
+                                <button
+                                    type="button"
+                                    class="color-option active blue"
+                                    data-color="#3B82F6"
+                                    aria-label="Blue"
+                                ></button>
+
+                                <button
+                                    type="button"
+                                    class="color-option green"
+                                    data-color="#00C896"
+                                    aria-label="Green"
+                                ></button>
+
+                                <button
+                                    type="button"
+                                    class="color-option purple"
+                                    data-color="#8B5CF6"
+                                    aria-label="Purple"
+                                ></button>
+
+                                <button
+                                    type="button"
+                                    class="color-option orange"
+                                    data-color="#F59E0B"
+                                    aria-label="Orange"
+                                ></button>
+
+                                <button
+                                    type="button"
+                                    class="color-option red"
+                                    data-color="#EF4444"
+                                    aria-label="Red"
+                                ></button>
+
+                                <button
+                                    type="button"
+                                    class="color-option teal"
+                                    data-color="#14B8A6"
+                                    aria-label="Teal"
+                                ></button>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="cancel-button"
+                                id="cancelButton"
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="create-button"
+                            >
+                                <i data-lucide="plus"></i>
+                                Create Habit
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+
+                <!-- =====================
+                     RIGHT COLUMN
+                ====================== -->
+
+                <aside class="right-column">
+
+
+                    <!-- PREVIEW -->
+
+                    <section class="side-card preview-card">
+
+                        <h2>Habit Card Preview</h2>
+
+
+                        <div class="habit-preview">
+
+                            <div
+                                class="preview-checkbox"
+                                id="previewCheckbox"
+                            ></div>
+
+
+                            <div
+                                class="preview-icon"
+                                id="previewIcon"
+                            >
+                                <i data-lucide="code-2"></i>
+                            </div>
+
+
+                            <div class="preview-info">
+
+                                <strong id="previewName">
+                                    Coding Practice
+                                </strong>
+
+                                <span id="previewMeta">
+                                    Skills • Daily
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="preview-streak"
+                            >
+                                🔥
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- TIP -->
+
+                    <section class="side-card tip-card">
+
+                        <div class="tip-title">
+
+                            <i data-lucide="info"></i>
+
+                            <h2>
+                                Habit-Building Tip
+                            </h2>
+
+                        </div>
+
+
+                        <p>
+                            Starting small is the key. Define clear target
+                            goals and use reminders to create strong visual
+                            triggers every day. Consistent daily repetitions
+                            build permanent neural pathways!
+                        </p>
+
+                    </section>
+
+                </aside>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        <i data-lucide="check-circle"></i>
+
+        <span id="toastMessage">
+            Habit created successfully!
+        </span>
+    </div>
+
+
+
+    <script src="add-habit.js"></script>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>
