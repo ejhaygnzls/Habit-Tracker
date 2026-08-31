@@ -1,67 +1,400 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Habit Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Habit Tracker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
-  <header class="app-header">
-    <div class="header-left">
-      <h1 class="app-title">Habit Tracker</h1>
-      <p class="greeting" id="greeting">Good day 👋</p>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    <i data-lucide="check-circle"></i>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <button class="nav-item active" data-page="today">
+                    <i data-lucide="layout-grid"></i>
+                </button>
+
+                <button class="nav-item" data-page="habits">
+                    <i data-lucide="calendar-days"></i>
+                </button>
+
+                <button class="nav-item" data-page="progress">
+                    <i data-lucide="chart-no-axes-combined"></i>
+                </button>
+
+                <button class="nav-item" data-page="settings">
+                    <i data-lucide="settings"></i>
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button class="theme-toggle">
+                    <i data-lucide="moon"></i>
+                </button>
+
+                <div class="profile-avatar">
+                    <span>J</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN APPLICATION -->
+        <main class="main">
+
+            <!-- PAGE HEADER -->
+            <header class="page-header">
+
+                <div>
+                    <h1>Habits</h1>
+                    <p>Good morning, Ejhay! 👋</p>
+                </div>
+
+                <button class="date-button" id="dateButton" type="button">
+                    <i data-lucide="calendar"></i>
+                    <span id="dateButtonLabel">Sun, Aug 16, 2026</span>
+                    <i data-lucide="chevron-down"></i>
+                </button>
+
+            </header>
+
+
+            <!-- STATISTICS -->
+            <section class="stats-grid">
+
+                <div class="stat-card progress-card">
+
+                    <div class="circular-progress">
+                        <span>67%</span>
+                    </div>
+
+                    <div class="stat-content">
+                        <span class="stat-label">Overall Progress</span>
+                        <strong id="progressSummary">4 of 6 habits</strong>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon streak">
+                        <i data-lucide="flame"></i>
+                    </div>
+
+                    <div>
+                        <strong class="stat-number" id="currentStreakValue">7</strong>
+                        <span class="stat-label">Current Streak</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon longest">
+                        <i data-lucide="award"></i>
+                    </div>
+
+                    <div>
+                        <strong class="stat-number" id="longestStreakValue">21</strong>
+                        <span class="stat-label">Longest Streak</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon completed">
+                        <i data-lucide="circle-check"></i>
+                    </div>
+
+                    <div>
+                        <strong class="stat-number" id="completedThisWeekValue">12</strong>
+                        <span class="stat-label">Completed this week</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONTENT GRID -->
+            <section class="content-grid">
+
+
+                <!-- HABITS -->
+                <div class="habits-panel">
+
+                    <div class="habits-toolbar">
+
+                        <div class="habit-tabs">
+
+                            <button class="tab active" data-filter="all" type="button">
+                                All Habits
+                            </button>
+
+                            <button class="tab" data-filter="active" type="button">
+                                Active
+                            </button>
+
+                            <button class="tab" data-filter="inactive" type="button">
+                                Inactive
+                            </button>
+
+                        </div>
+
+
+                        <div class="habit-actions">
+
+                            <div class="search-box">
+
+                                <i data-lucide="search"></i>
+
+                                <input
+                                    id="habitSearch"
+                                    type="text"
+                                    placeholder="Search habits..."
+                                >
+
+                            </div>
+
+
+                            <select id="categoryFilter" class="category-select">
+                                <option value="All Categories">All Categories</option>
+                                <option value="Fitness">Fitness</option>
+                                <option value="Skills">Skills</option>
+                                <option value="Learning">Learning</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Work">Work</option>
+                            </select>
+
+
+                            <button class="add-habit-button" id="addHabitButton" type="button">
+                                <i data-lucide="plus"></i>
+                                Add Habit
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="habit-count" id="habitCount">
+                        6 habits
+                    </div>
+
+
+                    <!-- HABIT LIST -->
+                    <div class="habit-list" id="habitList">
+
+                        <!-- JavaScript will create habits here -->
+
+                    </div>
+
+
+                    <div class="habits-footer">
+
+                        <i data-lucide="info"></i>
+
+                        <span>
+                            Complete your habits and build consistency!
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDEBAR -->
+                <aside class="right-panel">
+
+
+                    <!-- TODAY SUMMARY -->
+                    <div class="side-card">
+
+                        <h2>Today's Summary</h2>
+
+                        <div class="summary-row">
+                            <span>
+                                <i class="dot completed-dot"></i>
+                                Completed
+                            </span>
+
+                            <strong id="summaryCompleted">4 habits</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>
+                                <i class="dot remaining-dot"></i>
+                                Remaining
+                            </span>
+
+                            <strong id="summaryRemaining">2 habits</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>
+                                <i class="dot total-dot"></i>
+                                Total Habits
+                            </span>
+
+                            <strong id="summaryTotal">6 habits</strong>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>
+                                <i class="dot rate-dot"></i>
+                                Completion Rate
+                            </span>
+
+                            <strong id="summaryRate">67%</strong>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CALENDAR -->
+                    <div class="side-card calendar-card">
+
+                        <div class="calendar-header">
+
+                            <button id="prevMonthButton" type="button" aria-label="Previous month">
+                                <i data-lucide="chevron-left"></i>
+                            </button>
+
+                            <strong id="calendarMonthLabel">August 2026</strong>
+
+                            <button id="nextMonthButton" type="button" aria-label="Next month">
+                                <i data-lucide="chevron-right"></i>
+                            </button>
+
+                        </div>
+
+
+                        <div class="weekdays">
+
+                            <span>MON</span>
+                            <span>TUE</span>
+                            <span>WED</span>
+                            <span>THU</span>
+                            <span>FRI</span>
+                            <span>SAT</span>
+                            <span>SUN</span>
+
+                        </div>
+
+
+                        <div class="calendar-grid" id="calendarGrid"></div>
+
+                    </div>
+
+
+                    <!-- WEEKLY PROGRESS -->
+                    <div class="side-card weekly-card">
+
+                        <h2>Weekly Progress</h2>
+
+                        <div class="chart">
+
+                            <div class="chart-y">
+                                <span>100%</span>
+                                <span>50%</span>
+                                <span>0%</span>
+                            </div>
+
+                            <div class="bars">
+
+                                <div class="bar-container">
+                                    <div class="bar" style="height:75%"></div>
+                                    <span>Mon</span>
+                                </div>
+
+                                <div class="bar-container">
+                                    <div class="bar" style="height:90%"></div>
+                                    <span>Tue</span>
+                                </div>
+
+                                <div class="bar-container">
+                                    <div class="bar" style="height:50%"></div>
+                                    <span>Wed</span>
+                                </div>
+
+                                <div class="bar-container">
+                                    <div class="bar" style="height:85%"></div>
+                                    <span>Thu</span>
+                                </div>
+
+                                <div class="bar-container">
+                                    <div class="bar" style="height:65%"></div>
+                                    <span>Fri</span>
+                                </div>
+
+                                <div class="bar-container">
+                                    <div class="bar" style="height:40%"></div>
+                                    <span>Sat</span>
+                                </div>
+
+                                <div class="bar-container">
+                                    <div class="bar" style="height:60%"></div>
+                                    <span>Sun</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="average">
+
+                            <span>Avg. Completion</span>
+
+                            <strong>71%</strong>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </section>
+
+        </main>
+
     </div>
-    <div class="header-right">
-      <div id="current-date" class="current-date"></div>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="dashboard">
-      <div class="progress-card card">
-        <h2>Today's Progress</h2>
-        <div class="progress-info">
-          <div class="progress-percent" id="progress-percent">0%</div>
-          <div class="progress-bar">
-            <div id="progress-fill" class="progress-fill" style="width:0%"></div>
-          </div>
-        </div>
-        <div class="streak">Current streak: <span id="current-streak">0</span> days</div>
-      </div>
 
-      <div class="habits-card card">
-        <div class="habits-header">
-          <h2>Today's Habits</h2>
-          <button id="add-habit-btn" class="btn primary">+ Add Habit</button>
-        </div>
+    <script src="js/script.js"></script>
 
-        <ul id="habits-list" class="habits-list"></ul>
-      </div>
-    </section>
-  </main>
+    <script>
+        lucide.createIcons();
+    </script>
 
-  <!-- Add Habit Modal -->
-  <div id="habit-modal" class="modal hidden">
-    <div class="modal-content">
-      <h3>Add Habit</h3>
-      <form id="habit-form">
-        <label>
-          Habit Name
-          <input id="habit-name" type="text" placeholder="e.g. Coding" required />
-        </label>
-        <label>
-          Category
-          <input id="habit-category" type="text" placeholder="e.g. Skills" />
-        </label>
-        <div class="modal-actions">
-          <button type="button" id="cancel-btn" class="btn">Cancel</button>
-          <button type="submit" class="btn primary">Add Habit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
