@@ -5,6 +5,7 @@
 }
 
 :root {
+    /* Dark Mode (Default) */
     --background: #080d16;
     --sidebar: #091524;
 
@@ -24,6 +25,57 @@
     --orange: #ff8a00;
     --purple: #8b5cf6;
     --red: #ef4444;
+}
+
+/* Light Mode */
+[data-theme="light"] {
+    --background: #f8f9fa;
+    --sidebar: #ffffff;
+
+    --surface: #f5f6f7;
+    --surface-hover: #eeeff1;
+
+    --border: #e1e4e8;
+
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+
+    --green: #059669;
+    --orange: #d97706;
+    --purple: #7c3aed;
+    --red: #dc2626;
+}
+
+[data-theme="light"] .nav-item.active {
+    background: #dbeafe;
+}
+
+[data-theme="light"] .circular-progress {
+    background: conic-gradient(
+        var(--primary) 67%,
+        #cbd5e1 0
+    );
+}
+
+[data-theme="light"] .progress-bar {
+    background: #cbd5e1;
+}
+
+[data-theme="light"] .habit-checkbox {
+    border-color: #cbd5e1;
+}
+
+[data-theme="light"] .stat-icon.streak {
+    background: rgba(220, 38, 38, 0.12);
+    color: #991b1b;
+}
+
+[data-theme="light"] .chart-y span {
+    color: #8898ab;
 }
 
 body {
@@ -152,6 +204,8 @@ button {
     background: #202b3e;
 
     position: relative;
+    
+    transition: background 0.3s ease;
 }
 
 .theme-toggle::before {
@@ -167,6 +221,16 @@ button {
     border-radius: 50%;
 
     background: var(--primary);
+    
+    transition: left 0.3s ease;
+}
+
+.theme-toggle.light-mode {
+    background: #cbd5e1;
+}
+
+.theme-toggle.light-mode::before {
+    left: 23px;
 }
 
 .theme-toggle svg {
@@ -186,6 +250,11 @@ button {
     justify-content: center;
 
     color: white;
+}
+
+[data-theme="light"] .profile-avatar {
+    background: #e2e8f0;
+    color: #1a202c;
 }
 
 
@@ -510,7 +579,7 @@ button {
 
     border: 1px solid var(--border);
 
-    background: #0d1420;
+    background: var(--surface);
 
     display: flex;
     align-items: center;
@@ -531,7 +600,7 @@ button {
 
     background: transparent;
 
-    color: white;
+    color: var(--text-primary);
 
     font-size: 12px;
 }
@@ -545,7 +614,7 @@ button {
 
     padding: 0 9px;
 
-    background: #0d1420;
+    background: var(--surface);
 
     color: var(--text-secondary);
 
