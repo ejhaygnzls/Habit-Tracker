@@ -373,13 +373,6 @@ function setupNavigation() {
         });
     });
 
-    const themeToggle = document.querySelector(".theme-toggle");
-    if (themeToggle) {
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-        });
-    }
-
     if (prevMonthButton) {
         prevMonthButton.addEventListener("click", () => {
             calendarState.currentMonth = new Date(
