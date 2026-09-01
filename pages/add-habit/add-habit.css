@@ -42,6 +42,44 @@
     --teal: #14B8A6;
 }
 
+/* Light Mode */
+[data-theme="light"] {
+
+    --background: #f8f9fa;
+
+    --sidebar: #ffffff;
+
+    --surface: #f5f6f7;
+
+    --surface-input: #ffffff;
+
+    --surface-hover: #eeeff1;
+
+    --border: #e1e4e8;
+
+    --border-light: #d0d5dd;
+
+    --primary: #3B82F6;
+
+    --primary-hover: #2563EB;
+
+    --text-primary: #1a202c;
+
+    --text-secondary: #4a5568;
+
+    --text-muted: #718096;
+
+    --green: #059669;
+
+    --purple: #7c3aed;
+
+    --orange: #d97706;
+
+    --red: #dc2626;
+
+    --teal: #0d9488;
+}
+
 
 html,
 body {
@@ -239,6 +277,8 @@ button {
     background: #202B3E;
 
     position: relative;
+    
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 
@@ -255,6 +295,17 @@ button {
     border-radius: 50%;
 
     background: var(--primary);
+    
+    transition: left 0.3s ease;
+}
+
+.theme-toggle.light-mode {
+    background: #cbd5e1;
+    border-color: #a0aec0;
+}
+
+.theme-toggle.light-mode .toggle-circle {
+    left: 24px;
 }
 
 
@@ -272,6 +323,12 @@ button {
     color: white;
 
     font-weight: 600;
+}
+
+[data-theme="light"] .profile-avatar {
+    background: #e2e8f0;
+    color: #1a202c;
+    border-color: #cbd5e1;
 }
 
 
